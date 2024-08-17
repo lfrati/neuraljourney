@@ -3,9 +3,9 @@ let fs;
 let n1, n2;
 let t = 0;
 
-function preload() {
-    song = loadSound("interstellar.mp3");
-}
+//function preload() {
+//    song = loadSound("interstellar.mp3");
+//}
 
 function setup() {
     pixelDensity(2);
@@ -42,11 +42,7 @@ function setup() {
             theShader = conf2shader(conf);
             shader(theShader);
         } else {
-            // only works for chrome?
-            document.querySelector('body').webkitRequestFullscreen()
             started = true;
-            song.play();
-            song.jump(2);
         }
     });
 
@@ -59,7 +55,6 @@ function setup() {
 
     theShader = conf2shader(conf);
     shader(theShader);
-    song.setLoop(true);
 }
 
 function draw() {
@@ -74,18 +69,9 @@ function draw() {
     }
 }
 
-function keyPressed() {
-    if (key == "s") {
-        // Download
-        started = false;
-        song.stop();
-    }
-    return false;
-}
-
 function conf2shader(conf) {
     code = parse(conf);
-    //console.log(code)
+    console.log(code)
 
     fs = `// FRAGMENT SHADER
 ${header}
